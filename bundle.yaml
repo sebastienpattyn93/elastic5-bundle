@@ -1,0 +1,15 @@
+machines:
+  '0':
+    constraints: 'arch=amd64'
+    series: trusty
+services:
+  elasticsearch:
+    charm: /home/sebastien/tengu-charms/charms/trusty/elasticsearch
+    num_units: 1
+    to: ['lxd:0']
+  metricbeat:
+    charm: /home/sebastien/tengu-charms/charms/trusty/metricbeat
+series: trusty
+relations:
+  - - "elasticsearch:client"
+    - "metricbeat:elasticsearch"
